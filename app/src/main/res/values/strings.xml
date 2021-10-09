@@ -3,4 +3,16 @@
     <string name="home">Home</string>
     <string name="add_food">Add Food</string>
     <string name="account">Account</string>
+    <string name="tolganin_mutfagi">Tolga\'nın Mutfağı</string>
+    <string name="app_logo">App Logo</string>
+    <string name="e_posta">E-posta</string>
+    <string name="parola">Parola</string>
+    <string name="sifreni_mi_unuttun">Şifreni mi unuttun?</string>
+    <string name="giris_yap">Giriş Yap</string>
+    <string name="kayit_ol">Kayıt Ol</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="parola_tekrar">Parola Tekrar</string>
+    <string name="isim">İsim</string>
+    <string name="soyisim">Soyisim</string>
 </resources>
