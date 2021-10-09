@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "224254471460",
+    "project_id": "foodbook-33a6d",
+    "storage_bucket": "foodbook-33a6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224254471460:android:e0f1b34378e19fb07117b1",
+        "android_client_info": {
+          "package_name": "com.toren.foodbookapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224254471460-9jfggosqdtaj3kihq3qaj2olqdi5610b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB9Zt7tN_ifrj11zRyb0a4yPUxiCyO3V0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224254471460-9jfggosqdtaj3kihq3qaj2olqdi5610b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
