@@ -4,10 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/account_fragment.xml" value="0.20018115942028986" />
-        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/add_food_fragment.xml" value="0.20018115942028986" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/login_fragment.xml" value="0.25" />
-        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/register_fragment.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/layout/register_fragment.xml" value="0.25" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp2/app/src/main/res/menu/bottom_bar.xml" value="0.3359375" />
       </map>
     </option>
