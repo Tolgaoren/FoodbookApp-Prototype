@@ -27,10 +27,10 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            goSignUpButton.setOnClickListener {
+            buttonRegister.setOnClickListener {
                 actionToRegister()
             }
-            signInButton.setOnClickListener {
+            buttonLogin.setOnClickListener {
                 actionToHome()
             }
         }
