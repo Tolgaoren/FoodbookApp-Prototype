@@ -4,104 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.LoginFragment">
+    tools:context=".ui.view.LoginFragment"
+    android:background="@drawable/loginscreen">
 
-    <TextView
-        android:id="@+id/textAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/tolganin_mutfagi"
-        android:textSize="34sp"
+
+
+    <EditText
+        android:id="@+id/userEmailText"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColor="#F7EEE7"
+        android:textColorHint="#F7EEE7"
+        app:layout_constraintBottom_toTopOf="@+id/userPasswordText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/userPasswordText"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="35dp"
+        android:ems="10"
+        android:hint="Parola"
+        android:inputType="textPersonName"
+        android:textColor="#F7EEE7"
+        android:textColorHint="#F7EEE7"
+        app:layout_constraintBottom_toTopOf="@+id/signInButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageAppLogo"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
-        android:contentDescription="@string/app_logo"
-        android:src="@drawable/ic_fastfood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAppName" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputMail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/e_posta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageAppLogo">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/parola"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputMail"
-        app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/textButtonForgetPassword"
+        android:id="@+id/signInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/sifreni_mi_unuttun"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="85dp"
+        android:onClick="signInClicked"
+        android:src="@drawable/girisbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
-
+        app:layout_constraintStart_toStartOf="parent" />
     <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/giris_yap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textButtonForgetPassword" />
+        android:id="@+id/goSignUpButton"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:background="#00282828"
+        android:onClick="goSignUp"
+        android:text="Oluştur"
+        android:textColor="#F7EEE7"
+        app:layout_constraintEnd_toEndOf="@+id/signInButton"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
-    <TextView
-        android:id="@+id/textButtonRegister"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/kayit_ol"
-        android:textColor="@color/myBlue"
-        android:textSize="20sp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="200dp"
+        android:src="@drawable/foodbook"
+        app:layout_constraintBottom_toTopOf="@+id/userEmailText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="117dp"
+        android:layout_height="35dp"
+        android:background="#00282828"
+        android:paddingTop="7dp"
+        android:text="Hesabın yok mu?"
+        android:textColor="#F7EEE7"
+        app:layout_constraintEnd_toStartOf="@+id/goSignUpButton"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+
+
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
