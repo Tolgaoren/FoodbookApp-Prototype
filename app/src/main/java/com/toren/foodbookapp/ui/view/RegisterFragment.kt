@@ -46,23 +46,25 @@ class RegisterFragment : Fragment() {
         var control = true
 
         binding.apply {
-            if (inputName.isEmpty() || inputName.size < 3) {
+            if (inputName.editText!!.text.toString().isEmpty() || inputName.editText!!.text.length < 3) {
                 inputName.error = "Geçerli bir isim giriniz."
                 control = false
             }
-            if (inputSurname.isEmpty() || inputSurname.size < 3) {
+            if (inputSurname.editText!!.text.toString().isEmpty() || inputSurname.editText!!.text.length < 3) {
                 inputSurname.error = "Geçerli bir isim giriniz."
                 control = false
             }
-            if (inputMail.isEmpty()) {
+            if (inputMail.editText!!.text.isEmpty()) {
                 inputMail.error = "Geçerli bir email adresi giriniz."
                 control = false
             }
-            if (inputPassword.isEmpty() || inputPassword.size < 6) {
+            if (inputPassword.editText!!.text.isEmpty() || inputPassword.editText!!.text.length < 6) {
                 inputPassword.error = "Minimum 6 karakterli bir parola belirleyiniz."
+                control = false
             }
-            if (inputPasswordControl.isEmpty() || inputPasswordControl.size < 6) {
+            if (inputPasswordControl.editText!!.text.isEmpty() || inputPasswordControl.editText!!.text.length < 6) {
                 inputPasswordControl.error = "Minimum 6 karakterli bir parola belirleyiniz."
+                control = false
             }
         }
 

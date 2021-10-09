@@ -2,12 +2,8 @@ package com.toren.foodbookapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.View
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.toren.foodbookapp.databinding.ActivityMainBinding
 
@@ -23,6 +19,17 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.fragmentContainerView)
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.loginFragment -> hideBottomBar()
+                R.id.registerFragment -> hideBottomBar()
+            }
+        }
+
+    }
+
+    private fun hideBottomBar() {
+        binding.bottomNavigationView.visibility = View.GONE
     }
 
 }
