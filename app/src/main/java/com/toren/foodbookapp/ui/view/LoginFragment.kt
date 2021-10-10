@@ -34,6 +34,13 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = Firebase.auth
+        val currentUser = auth.currentUser
+
+        if(currentUser == null) {
+            actionToLogin()
+        }else if (currentUser != null){
+            actionToHome()
+        }
 
         binding.apply {
             buttonRegister.setOnClickListener {
@@ -53,6 +60,7 @@ class LoginFragment : Fragment() {
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "signInWithEmail:success")
+                    actionToHome()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
@@ -72,6 +80,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun actionToHome() {
+        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment2()
+        findNavController().navigate(action)
+    }
+    private fun actionToLogin() {
 
     }
 
