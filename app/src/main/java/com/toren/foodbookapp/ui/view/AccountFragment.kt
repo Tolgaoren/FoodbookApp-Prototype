@@ -1,6 +1,5 @@
 package com.toren.foodbookapp.ui.view
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,18 +11,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.ui.viewmodel.AccountViewModel
-import com.toren.foodbookapp.R
 import com.toren.foodbookapp.databinding.AccountFragmentBinding
-import com.toren.foodbookapp.databinding.LoginFragmentBinding
 
 class AccountFragment : Fragment() {
 
     private val viewModel: AccountViewModel by viewModels()
     private lateinit var binding: AccountFragmentBinding
     private lateinit var auth: FirebaseAuth
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,17 +31,16 @@ class AccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = Firebase.auth
+
         binding.signOutButton.setOnClickListener(){
+            auth.signOut()
             actionToLogin()
         }
     }
 
     private fun actionToLogin() {
-        auth.signOut()
         val action = AccountFragmentDirections.actionAccountFragmentToLoginFragment()
         findNavController().navigate(action)
     }
-
-
 
 }
