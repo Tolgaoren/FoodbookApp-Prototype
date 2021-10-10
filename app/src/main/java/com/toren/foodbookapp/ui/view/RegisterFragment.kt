@@ -51,15 +51,13 @@ class RegisterFragment : Fragment() {
         var control = true
 
         binding.apply {
-            if (inputName.editText!!.text.toString()
-                    .isEmpty() || inputName.editText!!.text.length < 3) {
+            if (inputName.editText!!.text.toString().isEmpty() || inputName.editText!!.text.length < 3) {
                 inputName.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
                 inputName.error = null
             }
-            if (inputSurname.editText!!.text.toString()
-                    .isEmpty() || inputSurname.editText!!.text.length < 3) {
+            if (inputSurname.editText!!.text.toString().isEmpty() || inputSurname.editText!!.text.length < 3) {
                 inputSurname.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
