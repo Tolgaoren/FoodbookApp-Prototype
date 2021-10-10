@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.ui.viewmodel.LoginViewModel
@@ -34,13 +33,6 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = Firebase.auth
-        val currentUser = auth.currentUser
-
-        if(currentUser == null) {
-            actionToLogin()
-        }else if (currentUser != null){
-            actionToHome()
-        }
 
         binding.apply {
             buttonRegister.setOnClickListener {
@@ -55,36 +47,50 @@ class LoginFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null) {
+            actionToHome()
+        }
+    }
+
     private fun loginAccount(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "signInWithEmail:success")
                     actionToHome()
-                    val user = auth.currentUser
-                    updateUI(user)
                 } else {
                     Log.d("TAG", "signInWithEmail:failure", task.exception)
                     Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null)
                 }
             }
     }
 
-    private fun updateUI(user: FirebaseUser?) {
-        //auth.currentUser = user
-    }
-
     private fun userControl(): Boolean {
-        return true
+        var control = true
+
+        binding.apply {
+            if (inputEmail.text.isEmpty()) {
+                inputEmail.error = "Geçerli bir email adresi giriniz."
+                control = false
+            } else {
+                inputEmail.error = null
+            }
+            if (inputPassword.text.isEmpty() || inputPassword.text.length < 6) {
+                inputPassword.error = "Minimum 6 karakterli bir parola belirleyiniz."
+                control = false
+            } else {
+                inputPassword.error = null
+            }
+        }
+
+        return control
     }
 
     private fun actionToHome() {
         val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment2()
         findNavController().navigate(action)
-    }
-    private fun actionToLogin() {
-
     }
 
     private fun actionToRegister() {
