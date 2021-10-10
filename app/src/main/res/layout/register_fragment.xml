@@ -9,6 +9,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -16,7 +17,7 @@
         android:layout_marginEnd="16dp"
         android:hint="@string/isim"
         android:textColorHint="@color/white"
-        app:boxBackgroundMode="none"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/inputSurname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,6 +30,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputSurname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -36,7 +38,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/soyisim"
         android:textColorHint="@color/white"
-        app:boxBackgroundMode="none"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/inputName"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,6 +51,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputMail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -56,7 +59,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/e_posta"
         android:textColorHint="@color/white"
-        app:boxBackgroundMode="none"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputName">
@@ -70,6 +73,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -77,7 +81,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/parola"
         android:textColorHint="@color/white"
-        app:boxBackgroundMode="none"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inputMail"
@@ -93,6 +97,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputPasswordControl"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -100,7 +105,7 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/parola_tekrar"
         android:textColorHint="@color/white"
-        app:boxBackgroundMode="none"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword"
