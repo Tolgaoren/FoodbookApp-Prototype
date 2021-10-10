@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.ui.viewmodel.LoginViewModel
@@ -48,35 +47,55 @@ class LoginFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null) {
+            actionToHome()
+        }
+    }
+
     private fun loginAccount(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "signInWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
+                    actionToHome()
                 } else {
                     Log.d("TAG", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+                    Toast.makeText(this.context, "Giriş bilgileri yanlış.", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
     }
 
-    private fun updateUI(user: FirebaseUser?) {
-        //auth.currentUser = user
-    }
-
     private fun userControl(): Boolean {
-        return true
-    }
+        var control = true
 
-    private fun actionToHome() {
+        binding.apply {
+            if (inputEmail.text.isEmpty()) {
+                inputEmail.error = "Geçerli bir email adresi giriniz."
+                control = false
+            } else {
+                inputEmail.error = null
+            }
+            if (inputPassword.text.isEmpty() || inputPassword.text.length < 6) {
+                inputPassword.error = "Geçersiz şifre girdiniz."
+                control = false
+            } else {
+                inputPassword.error = null
+            }
+        }
 
+        return control
     }
 
     private fun actionToRegister() {
         val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment2()
+        findNavController().navigate(action)
+    }
+
+    private fun actionToHome() {
+        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment2()
         findNavController().navigate(action)
     }
 
