@@ -1,6 +1,7 @@
 package com.toren.foodbookapp.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.databinding.RegisterFragmentBinding
 import com.toren.foodbookapp.ui.viewmodel.RegisterViewModel
 
@@ -15,6 +20,7 @@ class RegisterFragment : Fragment() {
 
     private val viewModel: RegisterViewModel by viewModels()
     private lateinit var binding: RegisterFragmentBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +33,15 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auth = Firebase.auth
+
         binding.apply {
             textButtonLogin.setOnClickListener {
                 actionToLogin()
             }
             buttonRegister.setOnClickListener {
                 if (userControl()) {
-                    userRegister()
+                    registerAccount(inputMail.editText!!.text.toString(), inputPassword.editText!!.text.toString())
                 }
             }
         }
@@ -44,13 +52,17 @@ class RegisterFragment : Fragment() {
         var control = true
 
         binding.apply {
-            if (inputName.editText!!.text.toString().isEmpty() || inputName.editText!!.text.length < 3) {
+            if (inputName.editText!!.text.toString()
+                    .isEmpty() || inputName.editText!!.text.length < 3
+            ) {
                 inputName.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
                 inputName.error = null
             }
-            if (inputSurname.editText!!.text.toString().isEmpty() || inputSurname.editText!!.text.length < 3) {
+            if (inputSurname.editText!!.text.toString()
+                    .isEmpty() || inputSurname.editText!!.text.length < 3
+            ) {
                 inputSurname.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
@@ -79,12 +91,32 @@ class RegisterFragment : Fragment() {
         return control
     }
 
-    private fun userRegister() {
-        Toast.makeText(this.context, "BAŞARILI", Toast.LENGTH_SHORT).show()
+    private fun registerAccount(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener() { task ->
+                if (task.isSuccessful) {
+                    Log.d("TAG", "createUserWithEmail:success")
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+                    Log.d("TAG", "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                }
+            }
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        //auth.currentUser = user
     }
 
     private fun actionToLogin() {
         val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment2()
+        findNavController().navigate(action)
+    }
+
+    private fun actionToHome() {
+        val action = RegisterFragmentDirections.actionRegisterFragmentToHomeFragment2()
         findNavController().navigate(action)
     }
 
