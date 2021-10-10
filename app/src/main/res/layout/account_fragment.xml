@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.AccountFragment"
-    android:background="@drawable/accback2">
+    android:background="@drawable/accback2"
+    tools:context=".ui.view.AccountFragment">
 
     <ImageView
         android:id="@+id/signOutButton"
