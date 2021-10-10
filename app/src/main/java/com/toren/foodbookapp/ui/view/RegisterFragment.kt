@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.databinding.RegisterFragmentBinding
@@ -53,16 +52,14 @@ class RegisterFragment : Fragment() {
 
         binding.apply {
             if (inputName.editText!!.text.toString()
-                    .isEmpty() || inputName.editText!!.text.length < 3
-            ) {
+                    .isEmpty() || inputName.editText!!.text.length < 3) {
                 inputName.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
                 inputName.error = null
             }
             if (inputSurname.editText!!.text.toString()
-                    .isEmpty() || inputSurname.editText!!.text.length < 3
-            ) {
+                    .isEmpty() || inputSurname.editText!!.text.length < 3) {
                 inputSurname.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
@@ -96,18 +93,12 @@ class RegisterFragment : Fragment() {
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
+                    actionToHome()
                 } else {
                     Log.d("TAG", "createUserWithEmail:failure", task.exception)
                     Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null)
                 }
             }
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
-        //auth.currentUser = user
     }
 
     private fun actionToLogin() {

@@ -23,9 +23,14 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.loginFragment -> hideBottomBar()
                 R.id.registerFragment -> hideBottomBar()
+                else -> showBottomBar()
             }
         }
 
+    }
+
+    private fun showBottomBar() {
+        binding.bottomNavigationView.visibility = View.VISIBLE
     }
 
     private fun hideBottomBar() {
