@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.RegisterFragment"
-    android:background="@drawable/loginscreen">
+    android:background="@drawable/loginscreen"
+    tools:context=".ui.view.RegisterFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputName"
@@ -15,13 +15,16 @@
         android:layout_marginTop="96dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/isim"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="none"
         app:layout_constraintEnd_toStartOf="@+id/inputSurname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -32,13 +35,16 @@
         android:layout_marginTop="96dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/soyisim"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/inputName"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -49,6 +55,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/e_posta"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputName">
@@ -56,7 +64,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -67,15 +76,19 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/parola"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inputMail"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberPassword" />
+            android:inputType="numberPassword"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -86,15 +99,19 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/parola_tekrar"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberPassword" />
+            android:inputType="numberPassword"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
