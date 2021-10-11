@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/addback"
     tools:context=".ui.view.AddFoodFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,12 +14,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputFoodName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="342dp"
+            android:layout_height="45dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
             android:hint="@string/tarif_adı"
+            android:background="#F3EFE7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textAddFood">
@@ -30,12 +32,12 @@
 
         <ImageView
             android:id="@+id/inputFoodImage"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/cheeseburger_tarifi"
+            android:background="@drawable/add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputFoodName" />
@@ -47,13 +49,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
+            android:background="#F3EFE7"
             android:hint="Miktar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputFoodImage">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,12 +67,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:background="#F3EFE7"
             app:layout_constraintStart_toEndOf="@+id/inputMaterialAmount"
             app:layout_constraintTop_toBottomOf="@+id/inputFoodImage">
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,6 +85,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            android:background="#F3EFE7"
             android:hint="Malzeme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/inputMaterialType"
@@ -88,7 +93,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="40dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +116,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
+            android:background="#F3EFE7"
             android:hint="Hazırlanış"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +136,7 @@
             android:layout_marginEnd="32dp"
             android:text="@string/tarif_ekle"
             android:textSize="24sp"
+            android:textColor="#F3EFE7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -142,13 +149,14 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            android:background="#F3EFE7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
             <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,7 +167,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
-            android:text="Tarif Ekle"
+            android:text="Tarifi Ekle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
