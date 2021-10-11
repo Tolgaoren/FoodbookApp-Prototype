@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.loginFragment -> hideBottomBar()
                 R.id.registerFragment -> hideBottomBar()
+                R.id.addFoodFragment -> hideBottomBar()
                 else -> showBottomBar()
             }
         }
