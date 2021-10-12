@@ -8,14 +8,19 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.toren.foodbookapp.ui.viewmodel.AddFoodViewModel
 import com.toren.foodbookapp.R
+import com.toren.foodbookapp.adapter.MaterialAdapter
 import com.toren.foodbookapp.databinding.AddFoodFragmentBinding
+import com.toren.foodbookapp.model.Material
 
 class AddFoodFragment : Fragment() {
 
     private val viewModel: AddFoodViewModel by viewModels()
     private lateinit var binding: AddFoodFragmentBinding
+    private val materialList = ArrayList<Material>(arrayListOf())
+    private var materialAdapter = MaterialAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,12 +60,19 @@ class AddFoodFragment : Fragment() {
         (binding.inputFoodCategory.editText as AutoCompleteTextView).setAdapter(foodCategoryAdapter)
 
         binding.apply {
+
+            recylerViewMaterials.layoutManager = LinearLayoutManager(view.context)
+            recylerViewMaterials.adapter = materialAdapter
+
             buttonAddMaterial.setOnClickListener {
                 val materialAmount = inputMaterialAmount.editText!!.text.toString()
                 val materialType = inputMaterialType.editText!!.text.toString()
                 val materialName = inputMaterialName.editText!!.text.toString()
 
-                val material: String = "$materialAmount $materialType $materialName"
+                val material = "$materialAmount $materialType $materialName"
+
+                materialList.add(Material(material))
+                materialAdapter.updateList(materialList)
 
             }
         }
