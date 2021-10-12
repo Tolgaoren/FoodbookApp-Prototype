@@ -19,4 +19,8 @@
     <string name="button_login">Button Login</string>
     <string name="tarif_ekle">Tarif Ekle</string>
     <string name="tarif_adı">Tarif adı</string>
+    <string name="tarifi_ekle">Tarifi Ekle</string>
+    <string name="hazirlanis">Hazırlanış</string>
+    <string name="malzeme_ekle">Malzeme Ekle</string>
+    <string name="miktar">Miktar</string>
 </resources>
