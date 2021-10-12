@@ -53,6 +53,18 @@ class AddFoodFragment : Fragment() {
         )
         val foodCategoryAdapter = ArrayAdapter(requireContext(), R.layout.list_item, foodCategoryItems)
         (binding.inputFoodCategory.editText as AutoCompleteTextView).setAdapter(foodCategoryAdapter)
+
+        binding.apply {
+            buttonAddMaterial.setOnClickListener {
+                val materialAmount = inputMaterialAmount.editText!!.text.toString()
+                val materialType = inputMaterialType.editText!!.text.toString()
+                val materialName = inputMaterialName.editText!!.text.toString()
+
+                val material: String = "$materialAmount $materialType $materialName"
+
+            }
+        }
+
     }
 
 }
