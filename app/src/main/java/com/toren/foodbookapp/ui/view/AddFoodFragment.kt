@@ -69,14 +69,44 @@ class AddFoodFragment : Fragment() {
                 val materialType = inputMaterialType.editText!!.text.toString()
                 val materialName = inputMaterialName.editText!!.text.toString()
 
-                val material = "$materialAmount $materialType $materialName"
+                if(materialControl(materialAmount,materialType,materialName)) {
+                    val material = "$materialAmount $materialType $materialName"
 
-                materialList.add(Material(material))
-                materialAdapter.updateList(materialList)
+                    materialList.add(Material(material))
+                    materialAdapter.updateList(materialList)
+                    inputMaterialAmount.editText!!.text = null
+                    inputMaterialType.editText!!.text = null
+                    inputMaterialName.editText!!.text= null
+                }
 
             }
         }
 
+    }
+
+    private fun materialControl(materialAmount: String, materialType: String, materialName: String): Boolean {
+        var control = true
+
+        if (materialAmount.isEmpty()) {
+            binding.inputMaterialAmount.error = " "
+            control = false
+        } else {
+            binding.inputMaterialAmount.error = null
+        }
+        if (materialType.isEmpty()) {
+            binding.inputMaterialType.error = " "
+            control = false
+        } else {
+            binding.inputMaterialType.error = null
+        }
+        if (materialName.isEmpty()) {
+            binding.inputMaterialName.error = " "
+            control = false
+        } else {
+            binding.inputMaterialName.error = null
+        }
+
+        return control
     }
 
 }
