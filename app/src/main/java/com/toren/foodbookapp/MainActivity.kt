@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(findViewById(R.id.toolbarm))
+
         val navController = Navigation.findNavController(this, R.id.fragmentContainerView)
         binding.bottomNavigationView.setupWithNavController(navController)
 
@@ -27,7 +29,6 @@ class MainActivity : AppCompatActivity() {
                 else -> showBottomBar()
             }
         }
-
     }
 
     private fun showBottomBar() {
