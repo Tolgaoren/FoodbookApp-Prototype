@@ -19,8 +19,8 @@ class AddFoodViewModel : ViewModel() {
 
     fun saveNewFood(yemek: Yemek, imageUrl: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
-            storegeReference.putFile(imageUrl)
-           // database.child("foods").child(yemek.user+yemek.yemekIsmi).setValue(yemek)
+            storegeReference.child(yemek.user+yemek.yemekIsmi).putFile(imageUrl)
+            // database.child("foods").child(yemek.user+yemek.yemekIsmi).setValue(yemek)
             database.child("foods").push().setValue(yemek)
         }
     }

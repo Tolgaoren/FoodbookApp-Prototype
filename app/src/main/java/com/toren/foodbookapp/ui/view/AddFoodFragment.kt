@@ -112,7 +112,7 @@ class AddFoodFragment : Fragment() {
                     malzemelerDetayli = materialListDetayli,
                     hazirlanis = textInputLayout4.editText!!.text.toString(),
                     kategori = inputFoodCategory.editText!!.text.toString(),
-                    imgUrl = "",
+                    imgUrl = auth.uid.toString()+inputFoodName.editText!!.text.toString(),
                     user = auth.uid.toString()
                 )
                 viewModel.saveNewFood(yemek, imageUrl)
