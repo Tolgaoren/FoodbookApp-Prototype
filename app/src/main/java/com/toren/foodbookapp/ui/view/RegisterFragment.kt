@@ -104,7 +104,8 @@ class RegisterFragment : Fragment() {
                         surname = binding.inputSurname.editText!!.text.toString(),
                         email = binding.inputMail.editText!!.text.toString(),
                         following = arrayListOf(),
-                        uuid = auth.currentUser!!.uid
+                        uuid = auth.currentUser!!.uid,
+                        foods = arrayListOf()
                     )
                     viewModel.saveNewUser(user)
                     actionToHome()
