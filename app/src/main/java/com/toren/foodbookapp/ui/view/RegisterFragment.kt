@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.databinding.RegisterFragmentBinding
+import com.toren.foodbookapp.model.Users
 import com.toren.foodbookapp.ui.viewmodel.RegisterViewModel
 
 class RegisterFragment : Fragment() {
@@ -40,7 +41,10 @@ class RegisterFragment : Fragment() {
             }
             buttonRegister.setOnClickListener {
                 if (userControl()) {
-                    registerAccount(inputMail.editText!!.text.toString(), inputPassword.editText!!.text.toString())
+                    registerAccount(
+                        inputMail.editText!!.text.toString(),
+                        inputPassword.editText!!.text.toString()
+                    )
                 }
             }
         }
@@ -51,13 +55,17 @@ class RegisterFragment : Fragment() {
         var control = true
 
         binding.apply {
-            if (inputName.editText!!.text.toString().isEmpty() || inputName.editText!!.text.length < 3) {
+            if (inputName.editText!!.text.toString()
+                    .isEmpty() || inputName.editText!!.text.length < 3
+            ) {
                 inputName.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
                 inputName.error = null
             }
-            if (inputSurname.editText!!.text.toString().isEmpty() || inputSurname.editText!!.text.length < 3) {
+            if (inputSurname.editText!!.text.toString()
+                    .isEmpty() || inputSurname.editText!!.text.length < 3
+            ) {
                 inputSurname.error = "Geçerli bir isim giriniz."
                 control = false
             } else {
@@ -91,10 +99,19 @@ class RegisterFragment : Fragment() {
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "createUserWithEmail:success")
+                    val user = Users(
+                        name = binding.inputName.editText!!.text.toString(),
+                        surname = binding.inputSurname.editText!!.text.toString(),
+                        email = binding.inputMail.editText!!.text.toString(),
+                        following = arrayListOf(),
+                        uuid = auth.currentUser!!.uid
+                    )
+                    viewModel.saveNewUser(user)
                     actionToHome()
                 } else {
                     Log.d("TAG", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
     }
