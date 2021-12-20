@@ -23,4 +23,7 @@
     <string name="hazirlanis">Hazırlanış</string>
     <string name="malzeme_ekle">Malzeme Ekle</string>
     <string name="miktar">Miktar</string>
+    <string name="kategori">Kategori</string>
+    <string name="adet">adet</string>
+    <string name="malzeme">Malzeme</string>
 </resources>
