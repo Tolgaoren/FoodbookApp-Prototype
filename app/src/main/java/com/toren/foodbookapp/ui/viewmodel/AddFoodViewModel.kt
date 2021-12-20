@@ -3,8 +3,7 @@ package com.toren.foodbookapp.ui.viewmodel
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -14,15 +13,15 @@ import kotlinx.coroutines.launch
 
 class AddFoodViewModel : ViewModel() {
 
-    private val database: DatabaseReference = Firebase.database.reference
+    private val db = Firebase.firestore
     private val storegeReference: StorageReference = Firebase.storage.reference
 
     fun saveNewFood(yemek: Yemek, imageUrl: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             storegeReference.child(yemek.user + yemek.yemekIsmi).putFile(imageUrl)
-            database.child("foods").child(yemek.yemekIsmi + yemek.user).setValue(yemek)
-            database.child("users").child(yemek.user).child("foods")
-                .child(yemek.yemekIsmi + yemek.user).setValue(yemek)
+            db.collection("foods").document(yemek.yemekIsmi + yemek.user).set(yemek)
+            db.collection("users").document(yemek.user).collection("foods")
+                .document(yemek.yemekIsmi + yemek.user).set(yemek)
         }
     }
 
