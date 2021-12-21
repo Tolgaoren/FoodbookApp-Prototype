@@ -46,10 +46,8 @@ class AddFoodFragment : Fragment() {
 
         auth = Firebase.auth
 
-        val materialTypeItems =
-            listOf("adet", "ml", "gr", "kg", "su bardağı", "yemek kaşığı", "tutam", "çay kaşığı")
-        val materialTypeAdapter =
-            ArrayAdapter(requireContext(), R.layout.list_item, materialTypeItems)
+        val materialTypeItems = listOf("adet", "ml", "gr", "kg", "su bardağı", "yemek kaşığı", "tutam", "çay kaşığı")
+        val materialTypeAdapter = ArrayAdapter(requireContext(), R.layout.list_item, materialTypeItems)
         (binding.inputMaterialType.editText as AutoCompleteTextView).setAdapter(materialTypeAdapter)
 
         val foodCategoryItems = listOf(
@@ -71,8 +69,8 @@ class AddFoodFragment : Fragment() {
             "Salata, Meze ve Sos Tarifleri",
             "Aperatifler"
         )
-        val foodCategoryAdapter =
-            ArrayAdapter(requireContext(), R.layout.list_item, foodCategoryItems)
+
+        val foodCategoryAdapter = ArrayAdapter(requireContext(), R.layout.list_item, foodCategoryItems)
         (binding.inputFoodCategory.editText as AutoCompleteTextView).setAdapter(foodCategoryAdapter)
 
         binding.apply {

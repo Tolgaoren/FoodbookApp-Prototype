@@ -26,3 +26,4 @@ class AddFoodViewModel : ViewModel() {
     }
 
 }
+
