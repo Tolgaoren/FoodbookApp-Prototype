@@ -1,6 +1,6 @@
 package com.toren.foodbookapp.adapter
 
-import android.util.Log
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,10 +9,11 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.toren.foodbookapp.databinding.AccountFoodItemBinding
 import com.toren.foodbookapp.model.Yemek
+import java.io.File
 
 class FoodAdapter(private val foodList: ArrayList<Yemek>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
 
-    val imageRef = Firebase.storage.reference
+    private val imageRef = Firebase.storage.reference
 
     class ViewHolder(val foodItemBinding: AccountFoodItemBinding) : RecyclerView.ViewHolder(foodItemBinding.root) {
 
@@ -21,12 +22,11 @@ class FoodAdapter(private val foodList: ArrayList<Yemek>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.foodItemBinding.foodText.text = foodList[position].yemekIsmi
         holder.foodItemBinding.foodHazirlanis.text = foodList[position].hazirlanis
-        val image = imageRef.child("images\${foodList[position].imgUrl}").downloadUrl.addOnSuccessListener {
-            holder.foodItemBinding.foodImage.load(it.toString())
-            Log.e("TAG","${it.toString()}WER")
+        val localFile = File.createTempFile("tempImage","jpg")
+        imageRef.child(foodList[position].imgUrl).getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            holder.foodItemBinding.foodImage.load(bitmap)
         }
-        //holder.foodItemBinding.foodImage.load(image.toString())
-        //Log.e("TAG",image.toString())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
