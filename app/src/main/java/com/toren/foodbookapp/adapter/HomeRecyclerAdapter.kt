@@ -1,4 +1,4 @@
-package com.toren.foodbookapp.ui.viewmodel
+package com.toren.foodbookapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View

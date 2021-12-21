@@ -20,14 +20,13 @@ import com.toren.foodbookapp.ui.viewmodel.AddFoodViewModel
 import com.toren.foodbookapp.R
 import com.toren.foodbookapp.adapter.MaterialAdapter
 import com.toren.foodbookapp.databinding.AddFoodFragmentBinding
-import com.toren.foodbookapp.model.Material
 import com.toren.foodbookapp.model.Yemek
 
 class AddFoodFragment : Fragment() {
 
     private val viewModel: AddFoodViewModel by viewModels()
     private lateinit var binding: AddFoodFragmentBinding
-    private val materialListDetayli = ArrayList<Material>(arrayListOf())
+    private val materialListDetayli = ArrayList<String>(arrayListOf())
     private val materialList = ArrayList<String>(arrayListOf())
     private var materialAdapter = MaterialAdapter(arrayListOf())
     private lateinit var auth: FirebaseAuth
@@ -93,7 +92,7 @@ class AddFoodFragment : Fragment() {
                 if (materialControl(materialAmount, materialType, materialName)) {
                     val material = "$materialAmount $materialType $materialName"
 
-                    materialListDetayli.add(Material(material))
+                    materialListDetayli.add(material)
                     materialList.add(materialName)
                     materialAdapter.updateList(materialListDetayli)
                     inputMaterialAmount.editText!!.text = null

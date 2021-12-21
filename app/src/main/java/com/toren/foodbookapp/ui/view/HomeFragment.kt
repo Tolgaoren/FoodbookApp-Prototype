@@ -9,16 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.ktx.Firebase
-import com.toren.foodbookapp.R
 import com.toren.foodbookapp.ui.viewmodel.HomeViewModel
 import com.toren.foodbookapp.databinding.HomeFragmentBinding
-import com.toren.foodbookapp.ui.viewmodel.HomeRecyclerAdapter
+import com.toren.foodbookapp.adapter.HomeRecyclerAdapter
 
 class HomeFragment : Fragment() {
 
