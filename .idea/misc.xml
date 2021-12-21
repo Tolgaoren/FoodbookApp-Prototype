@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/drawable/ic_fastfood.xml" value="0.162109375" />
-        <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/layout/account_fragment.xml" value="0.15" />
+        <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/layout/account_food_item.xml" value="0.209375" />
+        <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/layout/account_fragment.xml" value="0.209375" />
         <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/layout/activity_main.xml" value="0.15" />
         <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/layout/add_food_fragment.xml" value="0.18" />
         <entry key="..\:/Users/mertg/StudioProjects/FoodbookApp/app/src/main/res/layout/home_fragment.xml" value="0.2" />
