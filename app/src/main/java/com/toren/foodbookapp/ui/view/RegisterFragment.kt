@@ -1,17 +1,12 @@
 package com.toren.foodbookapp.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.databinding.RegisterFragmentBinding
 import com.toren.foodbookapp.model.Users
 import com.toren.foodbookapp.ui.viewmodel.RegisterViewModel
@@ -20,7 +15,6 @@ class RegisterFragment : Fragment() {
 
     private val viewModel: RegisterViewModel by viewModels()
     private lateinit var binding: RegisterFragmentBinding
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,18 +27,20 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
-
         binding.apply {
             textButtonLogin.setOnClickListener {
                 actionToLogin()
             }
             buttonRegister.setOnClickListener {
                 if (userControl()) {
-                    registerAccount(
-                        inputMail.editText!!.text.toString(),
-                        inputPassword.editText!!.text.toString()
+                    val user = Users(
+                        name = binding.inputName.editText!!.text.toString(),
+                        surname = binding.inputSurname.editText!!.text.toString(),
+                        email = binding.inputMail.editText!!.text.toString(),
                     )
+                    if (viewModel.saveNewUser(user, inputPassword.editText!!.text.toString())) {
+                        actionToHome()
+                    }
                 }
             }
         }
@@ -92,27 +88,6 @@ class RegisterFragment : Fragment() {
         }
 
         return control
-    }
-
-    private fun registerAccount(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    Log.d("TAG", "createUserWithEmail:success")
-                    val user = Users(
-                        name = binding.inputName.editText!!.text.toString(),
-                        surname = binding.inputSurname.editText!!.text.toString(),
-                        email = binding.inputMail.editText!!.text.toString(),
-                        uuid = auth.currentUser!!.uid,
-                    )
-                    viewModel.saveNewUser(user)
-                    actionToHome()
-                } else {
-                    Log.d("TAG", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
     }
 
     private fun actionToLogin() {

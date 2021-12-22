@@ -4,5 +4,5 @@ data class Users(
     val name: String = "",
     val surname: String = "",
     val email: String = "",
-    val uuid: String = "",
+    var uuid: String = "",
 )
