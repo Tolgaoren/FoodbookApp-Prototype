@@ -28,24 +28,8 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         binding = AccountFragmentBinding.inflate(layoutInflater)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.account_settings, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item!!.itemId){
-            R.id.signOut -> {
-                auth.signOut()
-                actionToLogin()
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,13 +39,19 @@ class AccountFragment : Fragment() {
 
         viewModel.getFoodData(auth.currentUser!!.uid)
         loadFoodData()
-/*
-        binding.signOutButton.setOnClickListener(){
-            auth.signOut()
-            actionToLogin()
-        } */
 
         binding.apply {
+            toolbarm.toolbar.inflateMenu(R.menu.account_settings)
+            toolbarm.toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.signOut -> {
+                        auth.signOut()
+                        actionToLogin()
+                    }
+                }
+                true
+            }
+
             recylerViewFoods.layoutManager = LinearLayoutManager(view.context)
             recylerViewFoods.adapter = foodAdapter
         }
