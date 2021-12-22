@@ -1,6 +1,7 @@
 package com.toren.foodbookapp.ui.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.ktx.auth
@@ -14,9 +15,9 @@ class RegisterViewModel : ViewModel() {
 
     private val auth = Firebase.auth
     private val db = Firebase.firestore
-    private var control = false
+    var control = MutableLiveData(false)
 
-    fun saveNewUser(user: Users, password: String): Boolean {
+    fun saveNewUser(user: Users, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             auth.createUserWithEmailAndPassword(user.email, password)
                 .addOnCompleteListener() { task ->
@@ -24,13 +25,12 @@ class RegisterViewModel : ViewModel() {
                         user.uuid = auth.uid.toString()
                         db.collection("users").document(user.uuid).set(user)
                         Log.d("TAG", "createUserWithEmail:success")
+                        control.value = true
                     } else {
                         Log.d("TAG", "createUserWithEmail:failure", task.exception)
-                        control = true
                     }
                 }
         }
-        return control
     }
 
 }
