@@ -3,6 +3,7 @@ package com.toren.foodbookapp.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.model.Yemek
@@ -11,12 +12,13 @@ import kotlinx.coroutines.launch
 
 class AccountViewModel : ViewModel() {
 
+    private val auth = Firebase.auth
     private val db = Firebase.firestore
     val foodList = MutableLiveData<List<Yemek>>()
 
-    fun getFoodData(uid: String) {
+    fun getFoodData() {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = db.collection("users").document(uid).collection("foods")
+            val data = db.collection("users").document(auth.uid.toString()).collection("foods")
             data.get().addOnSuccessListener {
                 if (it != null) {
                     foodList.value = it.toObjects(Yemek::class.java)
@@ -24,6 +26,12 @@ class AccountViewModel : ViewModel() {
             }.addOnFailureListener {
 
             }
+        }
+    }
+
+    fun signOut() {
+        viewModelScope.launch(Dispatchers.IO) {
+            auth.signOut()
         }
     }
 

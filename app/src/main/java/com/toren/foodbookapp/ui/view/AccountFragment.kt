@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.R
 import com.toren.foodbookapp.adapter.FoodAdapter
 import com.toren.foodbookapp.ui.viewmodel.AccountViewModel
@@ -21,7 +17,6 @@ class AccountFragment : Fragment() {
     private val viewModel: AccountViewModel by viewModels()
     private lateinit var binding: AccountFragmentBinding
     private var foodAdapter = FoodAdapter(arrayListOf())
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,9 +30,7 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
-
-        viewModel.getFoodData(auth.currentUser!!.uid)
+        viewModel.getFoodData()
         loadFoodData()
 
         binding.apply {
@@ -45,7 +38,7 @@ class AccountFragment : Fragment() {
             toolbarm.toolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.signOut -> {
-                        auth.signOut()
+                        viewModel.signOut()
                         actionToLogin()
                     }
                 }
@@ -58,7 +51,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun loadFoodData() {
-        viewModel.foodList.observe(viewLifecycleOwner, Observer {
+        viewModel.foodList.observe(viewLifecycleOwner, {
             it?.let {
                 foodAdapter.updateList(it as ArrayList<Yemek>)
             }
