@@ -1,17 +1,12 @@
 package com.toren.foodbookapp.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.ui.viewmodel.LoginViewModel
 import com.toren.foodbookapp.databinding.LoginFragmentBinding
 
@@ -19,7 +14,6 @@ class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var binding: LoginFragmentBinding
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +26,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
+        viewModel.isLogin()
+        isLogin()
 
         binding.apply {
             buttonRegister.setOnClickListener {
@@ -40,31 +35,30 @@ class LoginFragment : Fragment() {
             }
             buttonLogin.setOnClickListener {
                 if (userControl()) {
-                    loginAccount(inputEmail.text.toString(), inputPassword.text.toString())
+                    viewModel.loginAccount(inputEmail.text.toString(), inputPassword.text.toString())
+                    loginAccount()
                 }
             }
         }
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (auth.currentUser != null) {
-            actionToHome()
-        }
+    private fun loginAccount() {
+        viewModel.control.observe(viewLifecycleOwner, {
+            it?.let {
+                actionToHome()
+            }
+        })
     }
 
-    private fun loginAccount(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    Log.d("TAG", "signInWithEmail:success")
+    private fun isLogin() {
+        viewModel.isLogin.observe(viewLifecycleOwner, {
+            it?.let {
+                if (it) {
                     actionToHome()
-                } else {
-                    Log.d("TAG", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(this.context, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
+        })
     }
 
     private fun userControl(): Boolean {
