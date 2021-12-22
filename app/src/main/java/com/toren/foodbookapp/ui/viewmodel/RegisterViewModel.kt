@@ -14,7 +14,7 @@ class RegisterViewModel : ViewModel() {
 
     private val auth = Firebase.auth
     private val db = Firebase.firestore
-    private var control = true
+    private var control = false
 
     fun saveNewUser(user: Users, password: String): Boolean {
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,7 +26,7 @@ class RegisterViewModel : ViewModel() {
                         Log.d("TAG", "createUserWithEmail:success")
                     } else {
                         Log.d("TAG", "createUserWithEmail:failure", task.exception)
-                        control = false
+                        control = true
                     }
                 }
         }
