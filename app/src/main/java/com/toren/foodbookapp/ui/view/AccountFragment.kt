@@ -1,10 +1,8 @@
 package com.toren.foodbookapp.ui.view
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -12,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.toren.foodbookapp.R
 import com.toren.foodbookapp.adapter.FoodAdapter
 import com.toren.foodbookapp.ui.viewmodel.AccountViewModel
 import com.toren.foodbookapp.databinding.AccountFragmentBinding
@@ -28,8 +27,25 @@ class AccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         binding = AccountFragmentBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.account_settings, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item!!.itemId){
+            R.id.signOut -> {
+                auth.signOut()
+                actionToLogin()
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,11 +55,11 @@ class AccountFragment : Fragment() {
 
         viewModel.getFoodData(auth.currentUser!!.uid)
         loadFoodData()
-
+/*
         binding.signOutButton.setOnClickListener(){
             auth.signOut()
             actionToLogin()
-        }
+        } */
 
         binding.apply {
             recylerViewFoods.layoutManager = LinearLayoutManager(view.context)

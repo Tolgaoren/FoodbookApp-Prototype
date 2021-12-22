@@ -6,9 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.view.HomeFragment"
     android:background="@color/backWhite">
+
     <include
         android:id="@+id/toolbarm"
-        layout="@layout/toolbar"></include>
+        layout="@layout/toolbar"/>
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

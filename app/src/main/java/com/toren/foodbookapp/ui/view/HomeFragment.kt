@@ -21,13 +21,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: HomeFragmentBinding
     private lateinit var auth: FirebaseAuth
-
     private lateinit var db: FirebaseFirestore
-    var tarifBaslikFB: ArrayList<String> = ArrayList()
-    var tarifFotoFB: ArrayList<String> = ArrayList()
-    var tarifAciklamaFB: ArrayList<String> = ArrayList()
-    var adapter: HomeRecyclerAdapter? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +30,6 @@ class HomeFragment : Fragment() {
         binding = HomeFragmentBinding.inflate(layoutInflater)
         return binding.root
 
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,13 +37,6 @@ class HomeFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        getDataFromFirestore()
-
-        val recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(view.context)
-
-        adapter = HomeRecyclerAdapter(tarifBaslikFB, tarifFotoFB, tarifAciklamaFB)
-        recyclerView.adapter = adapter
 
         val currentUser = auth.currentUser
 
@@ -58,40 +44,6 @@ class HomeFragment : Fragment() {
         Log.v("FB", currentUser.uid)
 
     }
-    fun getDataFromFirestore() {
-        db.collection("posts").orderBy("date", Query.Direction.DESCENDING)
-            .addSnapshotListener { snapshot, exception ->
-                if (exception != null) {
-                    Toast.makeText(context,exception.localizedMessage.toString(), Toast.LENGTH_LONG).show() }
-                else {
-                    if (snapshot != null) {
-                        if (!snapshot.isEmpty) {
-                            tarifBaslikFB.clear()
-                            tarifFotoFB.clear()
-                            tarifAciklamaFB.clear()
 
-                            val documents = snapshot.documents
-                            for (document in documents) {
-                                val userEmail = document.get("userEmail") as String
-                                val baslik = document.get("baslik") as String
-                                val aciklama = document.get("aciklama") as String
-                                val icindekiler = document.get("icindekiler") as String
-                                val hazirlanis = document.get("hazirlanis") as String
-                                val downloadUrl = document.get("downloadUrl") as String
-                                val timestamp =
-                                    document.get("date") as com.google.firebase.Timestamp
-                                val date = timestamp.toDate()
-
-                                tarifBaslikFB.add(baslik)
-                                tarifFotoFB.add(downloadUrl)
-                                tarifAciklamaFB.add(aciklama)
-
-                                adapter!!.notifyDataSetChanged()
-                            }
-                        }
-                    }
-                }
-            }
-    }
 
 }
