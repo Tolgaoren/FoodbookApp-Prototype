@@ -17,22 +17,12 @@
         android:id="@+id/recylerViewFoods"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/signOutButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarm"
         tools:ignore="SpeakableTextPresentCheck"
         tools:listitem="@layout/account_food_item" />
 
-    <ImageView
-        android:id="@+id/signOutButton"
-        android:layout_width="204dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/cikisbutonu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

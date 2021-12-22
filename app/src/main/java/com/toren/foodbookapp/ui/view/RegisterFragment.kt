@@ -38,13 +38,22 @@ class RegisterFragment : Fragment() {
                         surname = binding.inputSurname.editText!!.text.toString(),
                         email = binding.inputMail.editText!!.text.toString(),
                     )
-                    if (viewModel.saveNewUser(user, inputPassword.editText!!.text.toString())) {
-                        actionToHome()
-                    }
+                    viewModel.saveNewUser(user, inputPassword.editText!!.text.toString())
+                    saveNewUser()
                 }
             }
         }
 
+    }
+
+    private fun saveNewUser() {
+        viewModel.control.observe(viewLifecycleOwner, {
+            it?.let {
+                if (it) {
+                    actionToHome()
+                }
+            }
+        })
     }
 
     private fun userControl(): Boolean {
