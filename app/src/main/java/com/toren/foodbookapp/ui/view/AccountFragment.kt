@@ -15,7 +15,8 @@ import com.toren.foodbookapp.model.Yemek
 class AccountFragment : Fragment() {
 
     private val viewModel: AccountViewModel by viewModels()
-    private lateinit var binding: AccountFragmentBinding
+    private var _binding: AccountFragmentBinding? = null
+    private val binding get() = _binding!!
     private var foodAdapter = FoodAdapter(arrayListOf())
 
     override fun onCreateView(
@@ -23,7 +24,7 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreate(savedInstanceState)
-        binding = AccountFragmentBinding.inflate(layoutInflater)
+        _binding = AccountFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -61,6 +62,11 @@ class AccountFragment : Fragment() {
     private fun actionToLogin() {
         val action = AccountFragmentDirections.actionAccountFragmentToLoginFragment()
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

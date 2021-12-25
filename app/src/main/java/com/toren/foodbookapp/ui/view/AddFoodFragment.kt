@@ -25,7 +25,8 @@ import com.toren.foodbookapp.model.Yemek
 class AddFoodFragment : Fragment() {
 
     private val viewModel: AddFoodViewModel by viewModels()
-    private lateinit var binding: AddFoodFragmentBinding
+    private var _binding: AddFoodFragmentBinding? = null
+    private val binding get() = _binding!!
     private val materialListDetayli = ArrayList<String>(arrayListOf())
     private val materialList = ArrayList<String>(arrayListOf())
     private var materialAdapter = MaterialAdapter(arrayListOf())
@@ -36,7 +37,7 @@ class AddFoodFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = AddFoodFragmentBinding.inflate(layoutInflater)
+        _binding = AddFoodFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -162,6 +163,11 @@ class AddFoodFragment : Fragment() {
             imageUrl = data.data!!
             binding.inputFoodImage.setImageURI(imageUrl)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

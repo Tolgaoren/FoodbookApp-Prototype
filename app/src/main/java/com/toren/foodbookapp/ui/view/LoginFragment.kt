@@ -13,13 +13,14 @@ import com.toren.foodbookapp.databinding.LoginFragmentBinding
 class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels()
-    private lateinit var binding: LoginFragmentBinding
+    private var _binding: LoginFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = LoginFragmentBinding.inflate(layoutInflater)
+        _binding = LoginFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -90,6 +91,11 @@ class LoginFragment : Fragment() {
     private fun actionToRegister() {
         val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment2()
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

@@ -14,13 +14,14 @@ import com.toren.foodbookapp.ui.viewmodel.RegisterViewModel
 class RegisterFragment : Fragment() {
 
     private val viewModel: RegisterViewModel by viewModels()
-    private lateinit var binding: RegisterFragmentBinding
+    private var _binding: RegisterFragmentBinding? = null
+    private val binding get () = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = RegisterFragmentBinding.inflate(layoutInflater)
+        _binding = RegisterFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -107,6 +108,11 @@ class RegisterFragment : Fragment() {
     private fun actionToHome() {
         val action = RegisterFragmentDirections.actionRegisterFragmentToHomeFragment2()
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
