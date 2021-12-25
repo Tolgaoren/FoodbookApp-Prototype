@@ -26,4 +26,5 @@
     <string name="kategori">Kategori</string>
     <string name="adet">adet</string>
     <string name="malzeme">Malzeme</string>
+    <string name="aciklama">Açıklama</string>
 </resources>
