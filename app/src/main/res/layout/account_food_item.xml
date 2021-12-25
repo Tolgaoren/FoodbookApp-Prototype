@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/food_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,43 +25,46 @@
 
         <ToggleButton
             android:id="@+id/likeBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="16dp"
-            android:textOn=""
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/toogle_selector"
             android:textOff=""
-            app:layout_constraintBottom_toBottomOf="@+id/food_text"
+            android:textOn=""
+            app:layout_constraintBottom_toTopOf="@+id/food_aciklama"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/food_text"
-            android:background="@drawable/toogle_selector"/>
+            app:layout_constraintTop_toTopOf="@+id/food_name" />
 
         <TextView
-            android:id="@+id/food_text"
+            android:id="@+id/food_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textColor="@color/myBlack"
             android:fontFamily="@font/noto_serif_bold"
-            android:textSize="20sp"
+            android:textColor="@color/myBlack"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/food_image" />
+            app:layout_constraintTop_toBottomOf="@+id/food_image"
+            tools:text="Yemek İsmi" />
 
         <TextView
-            android:id="@+id/food_hazirlanis"
+            android:id="@+id/food_aciklama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="TextView"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
             android:textColor="@color/myBlack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/food_text" />
+            app:layout_constraintTop_toBottomOf="@+id/food_name"
+            tools:text="Öğrenciler için hazırlaması kolay yemek tarifi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

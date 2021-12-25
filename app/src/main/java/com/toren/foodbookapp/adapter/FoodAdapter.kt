@@ -20,8 +20,8 @@ class FoodAdapter(private val foodList: ArrayList<Yemek>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.foodItemBinding.foodText.text = foodList[position].yemekIsmi
-        holder.foodItemBinding.foodHazirlanis.text = foodList[position].aciklama
+        holder.foodItemBinding.foodName.text = foodList[position].yemekIsmi
+        holder.foodItemBinding.foodAciklama.text = foodList[position].aciklama
         val localFile = File.createTempFile("tempImage","jpg")
         imageRef.child(foodList[position].imgUrl).getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
