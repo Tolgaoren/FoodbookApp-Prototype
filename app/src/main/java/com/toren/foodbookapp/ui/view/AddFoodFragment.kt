@@ -108,6 +108,7 @@ class AddFoodFragment : Fragment() {
                     malzemeler = materialList,
                     malzemelerDetayli = materialListDetayli,
                     hazirlanis = textInputLayout4.editText!!.text.toString(),
+                    aciklama = textInputLayout5.editText!!.text.toString(),
                     kategori = inputFoodCategory.editText!!.text.toString(),
                     imgUrl = auth.uid.toString()+inputFoodName.editText!!.text.toString(),
                     user = auth.uid.toString()
