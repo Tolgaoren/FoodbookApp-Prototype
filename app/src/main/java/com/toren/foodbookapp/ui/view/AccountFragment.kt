@@ -5,9 +5,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.toren.foodbookapp.R
-import com.toren.foodbookapp.adapter.FoodAdapter
+import com.toren.foodbookapp.adapter.FoodItemAdapter
 import com.toren.foodbookapp.ui.viewmodel.AccountViewModel
 import com.toren.foodbookapp.databinding.AccountFragmentBinding
 import com.toren.foodbookapp.model.Yemek
@@ -17,7 +17,7 @@ class AccountFragment : Fragment() {
     private val viewModel: AccountViewModel by viewModels()
     private var _binding: AccountFragmentBinding? = null
     private val binding get() = _binding!!
-    private var foodAdapter = FoodAdapter(arrayListOf())
+    private var foodAdapter = FoodItemAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,8 +46,9 @@ class AccountFragment : Fragment() {
                 true
             }
 
-            recylerViewFoods.layoutManager = LinearLayoutManager(view.context)
+            recylerViewFoods.layoutManager = GridLayoutManager(view.context, 2)
             recylerViewFoods.adapter = foodAdapter
+            recylerViewFoods.setHasFixedSize(true)
         }
     }
 

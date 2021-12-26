@@ -18,9 +18,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.toren.foodbookapp.ui.viewmodel.AddFoodViewModel
 import com.toren.foodbookapp.R
-import com.toren.foodbookapp.adapter.MaterialAdapter
+import com.toren.foodbookapp.adapter.MaterialItemAdapter
 import com.toren.foodbookapp.databinding.AddFoodFragmentBinding
 import com.toren.foodbookapp.model.Yemek
+import com.toren.foodbookapp.utils.Constants
 
 class AddFoodFragment : Fragment() {
 
@@ -29,7 +30,7 @@ class AddFoodFragment : Fragment() {
     private val binding get() = _binding!!
     private val materialListDetayli = ArrayList<String>(arrayListOf())
     private val materialList = ArrayList<String>(arrayListOf())
-    private var materialAdapter = MaterialAdapter(arrayListOf())
+    private var materialAdapter = MaterialItemAdapter(arrayListOf())
     private lateinit var auth: FirebaseAuth
     private lateinit var imageUrl: Uri
 
@@ -46,31 +47,10 @@ class AddFoodFragment : Fragment() {
 
         auth = Firebase.auth
 
-        val materialTypeItems = listOf("adet", "ml", "gr", "kg", "su bardağı", "yemek kaşığı", "tutam", "çay kaşığı")
-        val materialTypeAdapter = ArrayAdapter(requireContext(), R.layout.list_item, materialTypeItems)
+        val materialTypeAdapter = ArrayAdapter(requireContext(), R.layout.list_item, Constants.olcuBirimleri)
         (binding.inputMaterialType.editText as AutoCompleteTextView).setAdapter(materialTypeAdapter)
 
-        val foodCategoryItems = listOf(
-            "Kahvaltılık Tarifler",
-            "Hamur işi Tarifleri",
-            "Diyet Tarifler",
-            "Tatlı Tarifleri",
-            "Makarna ve Pilav Tarifleri",
-            "Vegan Tarifler",
-            "Çorba Tarifleri ",
-            "Bakliyat Yemekleri",
-            "Et Yemekleri",
-            "Sebze Yemekleri",
-            "Glutensiz Tarifler",
-            "Fast-Food Tarifler",
-            "Çocuklar için Tarifler",
-            "İçecek ve Kokteyl Tarifleri",
-            "Reçel, Turşu ve Salça Tarifleri",
-            "Salata, Meze ve Sos Tarifleri",
-            "Aperatifler"
-        )
-
-        val foodCategoryAdapter = ArrayAdapter(requireContext(), R.layout.list_item, foodCategoryItems)
+        val foodCategoryAdapter = ArrayAdapter(requireContext(), R.layout.list_item, Constants.yemekKategorileri)
         (binding.inputFoodCategory.editText as AutoCompleteTextView).setAdapter(foodCategoryAdapter)
 
         binding.apply {
@@ -111,7 +91,7 @@ class AddFoodFragment : Fragment() {
                     hazirlanis = textInputLayout4.editText!!.text.toString(),
                     aciklama = textInputLayout5.editText!!.text.toString(),
                     kategori = inputFoodCategory.editText!!.text.toString(),
-                    imgUrl = auth.uid.toString()+inputFoodName.editText!!.text.toString(),
+                    imgUrl = inputFoodName.editText!!.text.toString() + "?user=" + auth.uid.toString(),
                     user = auth.uid.toString()
                 )
                 viewModel.saveNewFood(yemek, imageUrl)

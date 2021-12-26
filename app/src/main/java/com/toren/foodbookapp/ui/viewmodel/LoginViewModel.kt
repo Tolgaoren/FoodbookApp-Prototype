@@ -8,13 +8,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class LoginViewModel : ViewModel() {
 
     private val auth = Firebase.auth
     var control = MutableLiveData(false)
-    var isLogin = MutableLiveData(false)
 
     fun loginAccount(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -27,17 +25,6 @@ class LoginViewModel : ViewModel() {
                         Log.d("TAG", "signInWithEmail:failure", task.exception)
                     }
                 }
-        }
-    }
-
-    fun isLogin() {
-        viewModelScope.launch(Dispatchers.IO) {
-            if (auth.currentUser != null) {
-                Log.d("TAG","MERHABALAR")
-                withContext(Dispatchers.Main) {
-                    isLogin.value = true
-                }
-            }
         }
     }
 

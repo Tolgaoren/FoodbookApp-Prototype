@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.toren.foodbookapp.databinding.MaterialItemBinding
 
-class MaterialAdapter(private val materialList: ArrayList<String>) : RecyclerView.Adapter<MaterialAdapter.ViewHolder>() {
+class MaterialItemAdapter(private val materialList: ArrayList<String>) : RecyclerView.Adapter<MaterialItemAdapter.ViewHolder>() {
     class ViewHolder(val materialItemBinding: MaterialItemBinding) : RecyclerView.ViewHolder(materialItemBinding.root) {
 
     }

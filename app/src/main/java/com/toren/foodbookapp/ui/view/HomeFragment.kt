@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayoutMediator
+import com.toren.foodbookapp.adapter.viewpager.HomeViewPagerAdapter
 import com.toren.foodbookapp.ui.viewmodel.HomeViewModel
 import com.toren.foodbookapp.databinding.HomeFragmentBinding
+import com.toren.foodbookapp.utils.Constants
 
 class HomeFragment : Fragment() {
 
@@ -20,12 +23,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = HomeFragmentBinding.inflate(layoutInflater)
+
+        val adapter = HomeViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle)
+        binding.viewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = Constants.yemekKategorileri[position]
+        }.attach()
+
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onDestroyView() {

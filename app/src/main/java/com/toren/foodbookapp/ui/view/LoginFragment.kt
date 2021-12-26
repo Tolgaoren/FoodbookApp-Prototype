@@ -27,9 +27,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.isLogin()
-        isLogin()
-
         binding.apply {
             buttonRegister.setOnClickListener {
                 actionToRegister()
@@ -48,16 +45,6 @@ class LoginFragment : Fragment() {
         viewModel.control.observe(viewLifecycleOwner, {
             it?.let {
                 actionToHome()
-            }
-        })
-    }
-
-    private fun isLogin() {
-        viewModel.isLogin.observe(viewLifecycleOwner, {
-            it?.let {
-                if (it) {
-                    actionToHome()
-                }
             }
         })
     }

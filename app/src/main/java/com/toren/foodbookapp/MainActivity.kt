@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.loginFragment -> hideBottomBar()
                 R.id.registerFragment -> hideBottomBar()
                 R.id.addFoodFragment -> hideBottomBar()
+                R.id.splashFragment -> hideBottomBar()
                 else -> showBottomBar()
             }
         }

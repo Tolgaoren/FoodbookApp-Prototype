@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_layout"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -61,5 +61,21 @@
         <action
             android:id="@+id/action_accountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.toren.foodbookapp.ui.view.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

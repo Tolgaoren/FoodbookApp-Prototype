@@ -10,29 +10,21 @@ import com.toren.foodbookapp.model.Yemek
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AccountViewModel : ViewModel() {
+class HomeViewPagerFragmentViewModel : ViewModel() {
 
-    private val auth = Firebase.auth
     private val db = Firebase.firestore
     val foodList = MutableLiveData<List<Yemek>>()
 
-    fun getFoodData() {
+    fun getFoodData(kategori: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            //val data = db.collection("users").document(auth.uid.toString()).collection("foods")
-            val data = db.collection("foods").whereEqualTo("user",auth.uid.toString())
+            val data = db.collection("foods").whereEqualTo("kategori", kategori)
             data.get().addOnSuccessListener {
                 if (it != null) {
                     foodList.value = it.toObjects(Yemek::class.java)
                 }
             }.addOnFailureListener {
-
+                //doldur burayi
             }
-        }
-    }
-
-    fun signOut() {
-        viewModelScope.launch(Dispatchers.IO) {
-            auth.signOut()
         }
     }
 

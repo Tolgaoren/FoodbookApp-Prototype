@@ -7,22 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.toren.foodbookapp.databinding.AccountFoodItemBinding
+import com.toren.foodbookapp.databinding.FoodItemBinding
 import com.toren.foodbookapp.model.Yemek
 import java.io.File
 
-class FoodAdapter(private val foodList: ArrayList<Yemek>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
+class FoodItemAdapter(
+    private val foodList: ArrayList<Yemek>
+) : RecyclerView.Adapter<FoodItemAdapter.ViewHolder>() {
 
     private val imageRef = Firebase.storage.reference
 
-    class ViewHolder(val foodItemBinding: AccountFoodItemBinding) : RecyclerView.ViewHolder(foodItemBinding.root) {
-
-    }
+    class ViewHolder(val foodItemBinding: FoodItemBinding) : RecyclerView.ViewHolder(foodItemBinding.root)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.foodItemBinding.foodName.text = foodList[position].yemekIsmi
-        holder.foodItemBinding.foodAciklama.text = foodList[position].aciklama
-        val localFile = File.createTempFile("tempImage","jpg")
+        val localFile = File.createTempFile("tempImage", "jpg")
         imageRef.child(foodList[position].imgUrl).getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             holder.foodItemBinding.foodImage.load(bitmap)
@@ -30,7 +29,7 @@ class FoodAdapter(private val foodList: ArrayList<Yemek>) : RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = AccountFoodItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = FoodItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
