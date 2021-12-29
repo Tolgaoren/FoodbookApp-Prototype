@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.FoodbookApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#E5282828</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/myBlack</item>
+        <item name="colorPrimaryVariant">@color/myBlack</item>
+        <item name="colorOnPrimary">@color/myBlack</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
