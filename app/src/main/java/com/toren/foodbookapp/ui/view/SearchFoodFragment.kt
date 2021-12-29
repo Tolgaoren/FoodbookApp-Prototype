@@ -1,7 +1,6 @@
 package com.toren.foodbookapp.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -57,10 +56,7 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
             yemekGetir.setOnClickListener {
                 val malzemeler = malzemeListesi
                 if (malzemeler.isNotEmpty()) {
-                    //loadFoodData(malzemeler)
-                    viewModel.yemekleriGetir(malzemeler.toSet())
-                    //viewModel.yemekleriEslestir(malzemeler)
-                    loadData()
+                    loadFoodData(malzemeler.toSet())
                 }
             }
 
@@ -68,30 +64,14 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
 
     }
 
-    private fun loadData() {
-        viewModel.eslesenYemekler.observe(viewLifecycleOwner, {
-            it?.let {
-                if (it.isNotEmpty()) {
-                    actionToFoods(it.toList())
-                } else {
-                    Toast.makeText(this.context, "Sonuç bulunamadı.", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
-        malzemeListesi.clear()
-        materialAdapter.temizle()
-    }
-
-    private fun loadFoodData(malzemeler: ArrayList<String>) {
-        //viewModel.yemekleriGetir()
-        Log.d("TAG","Malzeme Listesi: " + malzemeler.toList().toString())
+    private fun loadFoodData(malzemelerSet: Set<String>) {
+        viewModel.yemekleriGetir()
         viewModel.foodList.observe(viewLifecycleOwner, {
-            Log.d("TAG","2. Malzeme Listesi: " + malzemeler.toList().toString())
             it?.let {
                 val sonuclarYemek: ArrayList<Yemek> = arrayListOf()
                 val yemekler = it
                 for (i in yemekler) {
-                    if (malzemeler.containsAll(i.malzemeler)) {
+                    if (malzemelerSet.containsAll(i.malzemeler)) {
                         sonuclarYemek.add(i)
                     }
                 }
