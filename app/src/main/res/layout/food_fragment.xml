@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginscreen"
     tools:context=".ui.view.FoodFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,8 +12,8 @@
 
         <ImageView
             android:id="@+id/food_image"
-            android:layout_width="196dp"
-            android:layout_height="196dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -28,13 +27,36 @@
             android:id="@+id/food_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:text="CheeseBurger "
+            android:layout_marginTop="12dp"
+            android:text="CheeseBurger"
+            android:textColor="@color/myBlack"
             android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/food_image" />
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line"
+            app:layout_constraintTop_toBottomOf="@id/food_name"/>
+
+        <TextView
+            android:id="@+id/food_aciklama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:text="Yemeğimiz öğrenciler için çok güzeldir."
+            android:textSize="16sp"
+            android:textColor="@color/myBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line" />
 
         <TextView
             android:id="@+id/food_user"
@@ -68,33 +90,11 @@
             android:text="Malzemeler"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/myBlack"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/food_aciklama" />
 
-        <TextView
-            android:id="@+id/food_aciklama"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Yemeğimiz öğrenciler için çok güzeldir."
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/food_kategori" />
 
-        <TextView
-            android:id="@+id/food_kategori"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Kategori"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/food_name" />
 
         <TextView
             android:id="@+id/textView7"
@@ -105,6 +105,7 @@
             android:text="Hazırlanış"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/myBlack"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewMalzemeler" />
 
@@ -116,6 +117,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="TextView"
+            android:textColor="@color/myBlack"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
