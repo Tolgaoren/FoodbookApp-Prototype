@@ -3,18 +3,18 @@ package com.toren.foodbookapp.utils
 object Constants {
 
     val yemekKategorileri: List<String> = listOf(
-        "HAMUR İŞİ",
+        "KAHVALTILIK",
         "TATLILAR",
-        "PASTANE",
-        "ATIŞTIRMALIK",
         "HAFİF VE SAĞLIKLI",
         "ÇORBA",
+        "HAMUR İŞİ",
+        "ATIŞTIRMALIK",
         "ANA YEMEKLER",
         "ZEYTİNYAĞLILAR",
         "SALATA",
         "PİLAV",
         "MAKARNA",
-        "KAHVALTILIK",
+        "PASTANE",
         "İÇECEKLER",
         "YÖRESEL",
         "KİLER"
@@ -36,18 +36,18 @@ object Constants {
 
     val tabLayoutList: List<String> = listOf(
         "BUGÜN",
-        "HAMUR İŞİ",
+        "KAHVALTILIK",
         "TATLILAR",
-        "PASTANE",
-        "ATIŞTIRMALIK",
         "HAFİF VE SAĞLIKLI",
         "ÇORBA",
+        "HAMUR İŞİ",
+        "ATIŞTIRMALIK",
         "ANA YEMEKLER",
         "ZEYTİNYAĞLILAR",
         "SALATA",
         "PİLAV",
         "MAKARNA",
-        "KAHVALTILIK",
+        "PASTANE",
         "İÇECEKLER",
         "YÖRESEL",
         "KİLER"
