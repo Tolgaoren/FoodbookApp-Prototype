@@ -12,12 +12,12 @@ import com.toren.foodbookapp.adapter.MaterialItemAdapter
 import com.toren.foodbookapp.databinding.FoodFragmentBinding
 import com.toren.foodbookapp.ui.viewmodel.FoodViewModel
 
-class FoodFragment : Fragment() {
+class FoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
 
     private val viewModel: FoodViewModel by viewModels()
     private var _binding: FoodFragmentBinding? = null
     private val binding get() = _binding!!
-    private var materialAdapter = MaterialItemAdapter(arrayListOf())
+    private var materialAdapter = MaterialItemAdapter(arrayListOf(),this)
     private val args: FoodFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -46,6 +46,10 @@ class FoodFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onItemClick(position: Int) {
+        materialAdapter.removeItem(position)
     }
 
     override fun onDestroyView() {

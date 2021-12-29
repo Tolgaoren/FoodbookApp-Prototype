@@ -60,4 +60,10 @@ class FoodItemAdapter(
         foodList.addAll(newFoodList)
         notifyDataSetChanged()
     }
+
+    fun updateList(newFoodList: List<Yemek>) {
+        foodList.clear()
+        foodList.addAll(newFoodList)
+        notifyDataSetChanged()
+    }
 }

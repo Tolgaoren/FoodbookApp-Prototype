@@ -23,14 +23,14 @@ import com.toren.foodbookapp.databinding.AddFoodFragmentBinding
 import com.toren.foodbookapp.model.Yemek
 import com.toren.foodbookapp.utils.Constants
 
-class AddFoodFragment : Fragment() {
+class AddFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
 
     private val viewModel: AddFoodViewModel by viewModels()
     private var _binding: AddFoodFragmentBinding? = null
     private val binding get() = _binding!!
     private val materialListDetayli = ArrayList<String>(arrayListOf())
     private val materialList = ArrayList<String>(arrayListOf())
-    private var materialAdapter = MaterialItemAdapter(arrayListOf())
+    private var materialAdapter = MaterialItemAdapter(arrayListOf(), this)
     private lateinit var auth: FirebaseAuth
     private lateinit var imageUrl: Uri
 
@@ -102,9 +102,8 @@ class AddFoodFragment : Fragment() {
 
     }
 
-    private fun actionToHome() {
-        val action = AddFoodFragmentDirections.actionAddFoodFragmentToHomeFragment2()
-        findNavController().navigate(action)
+    override fun onItemClick(position: Int) {
+        materialAdapter.removeItem(position)
     }
 
     private fun materialControl(
@@ -143,6 +142,11 @@ class AddFoodFragment : Fragment() {
             imageUrl = data.data!!
             binding.inputFoodImage.setImageURI(imageUrl)
         }
+    }
+
+    private fun actionToHome() {
+        val action = AddFoodFragmentDirections.actionAddFoodFragmentToHomeFragment2()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

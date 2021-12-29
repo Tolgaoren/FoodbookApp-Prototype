@@ -105,7 +105,19 @@
         android:label="search_food_fragment"
         tools:layout="@layout/search_food_fragment" >
         <action
-            android:id="@+id/action_searchFoodFragment_to_foodFragment"
+            android:id="@+id/action_searchFoodFragment_to_foodsFragment"
+            app:destination="@id/foodsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodsFragment"
+        android:name="com.toren.foodbookapp.ui.view.FoodsFragment"
+        android:label="foods_fragment"
+        tools:layout="@layout/foods_fragment" >
+        <action
+            android:id="@+id/action_foodsFragment_to_foodFragment"
             app:destination="@id/foodFragment" />
+        <argument
+            android:name="yemekler"
+            app:argType="com.toren.foodbookapp.model.Yemek[]" />
     </fragment>
 </navigation>
