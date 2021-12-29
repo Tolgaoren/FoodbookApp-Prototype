@@ -38,7 +38,6 @@ class FoodFragment : Fragment() {
             foodName.text = food.yemekIsmi
             foodUser.text = food.user
             foodAciklama.text = food.aciklama
-            foodKategori.text = food.kategori
             foodHazirlanis.text = food.hazirlanis
 
             recyclerViewMalzemeler.layoutManager = LinearLayoutManager(view.context)
