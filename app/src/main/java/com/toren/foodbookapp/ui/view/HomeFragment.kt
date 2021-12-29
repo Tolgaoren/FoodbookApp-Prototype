@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.toren.foodbookapp.adapter.viewpager.HomeViewPagerAdapter
 import com.toren.foodbookapp.ui.viewmodel.HomeViewModel
@@ -32,6 +33,15 @@ class HomeFragment : Fragment() {
         }.attach()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.robot.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToSearchFoodFragment()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

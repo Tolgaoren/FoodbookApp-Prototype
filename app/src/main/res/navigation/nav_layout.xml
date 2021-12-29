@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_foodFragment"
             app:destination="@id/foodFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFoodFragment"
+            app:destination="@id/searchFoodFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -92,5 +95,17 @@
         <argument
             android:name="gelenYemek"
             app:argType="com.toren.foodbookapp.model.Yemek" />
+        <action
+            android:id="@+id/action_foodFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFoodFragment"
+        android:name="com.toren.foodbookapp.ui.view.SearchFoodFragment"
+        android:label="search_food_fragment"
+        tools:layout="@layout/search_food_fragment" >
+        <action
+            android:id="@+id/action_searchFoodFragment_to_foodFragment"
+            app:destination="@id/foodFragment" />
     </fragment>
 </navigation>
