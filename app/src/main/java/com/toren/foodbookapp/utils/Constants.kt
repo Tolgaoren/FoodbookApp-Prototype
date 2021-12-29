@@ -29,6 +29,7 @@ object Constants {
         "yemek kaşığı",
         "tatlı kaşığı",
         "çay kaşığı",
+        "çay bardağı",
         "demet",
         "paket",
         "tutam",
