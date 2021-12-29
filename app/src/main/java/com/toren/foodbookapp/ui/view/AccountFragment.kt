@@ -12,12 +12,13 @@ import com.toren.foodbookapp.ui.viewmodel.AccountViewModel
 import com.toren.foodbookapp.databinding.AccountFragmentBinding
 import com.toren.foodbookapp.model.Yemek
 
-class AccountFragment : Fragment() {
+class AccountFragment : Fragment(), FoodItemAdapter.OnItemClickListener {
 
     private val viewModel: AccountViewModel by viewModels()
     private var _binding: AccountFragmentBinding? = null
     private val binding get() = _binding!!
-    private var foodAdapter = FoodItemAdapter(arrayListOf())
+    private var foodAdapter = FoodItemAdapter(arrayListOf(), this)
+    private var foodList = ArrayList<Yemek>(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,10 +53,18 @@ class AccountFragment : Fragment() {
         }
     }
 
+    override fun onItemClick(position: Int) {
+        val food = foodList[position]
+        val action = AccountFragmentDirections.actionAccountFragmentToFoodFragment(food)
+        findNavController().navigate(action)
+    }
+
     private fun loadFoodData() {
         viewModel.foodList.observe(viewLifecycleOwner, {
             it?.let {
                 foodAdapter.updateList(it as ArrayList<Yemek>)
+                foodList.clear()
+                foodList.addAll(it)
             }
         })
     }

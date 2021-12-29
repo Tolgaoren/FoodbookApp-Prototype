@@ -1,5 +1,9 @@
 package com.toren.foodbookapp.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Yemek(
     val yemekIsmi: String = "",
     val aciklama: String = "",
@@ -9,4 +13,4 @@ data class Yemek(
     val kategori: String = "",
     val imgUrl: String = "",
     val user: String = ""
-)
+) : Parcelable

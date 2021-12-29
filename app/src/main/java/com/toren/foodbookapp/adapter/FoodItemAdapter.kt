@@ -2,6 +2,7 @@ package com.toren.foodbookapp.adapter
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -12,12 +13,29 @@ import com.toren.foodbookapp.model.Yemek
 import java.io.File
 
 class FoodItemAdapter(
-    private val foodList: ArrayList<Yemek>
+    private val foodList: ArrayList<Yemek>,
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<FoodItemAdapter.ViewHolder>() {
 
     private val imageRef = Firebase.storage.reference
 
-    class ViewHolder(val foodItemBinding: FoodItemBinding) : RecyclerView.ViewHolder(foodItemBinding.root)
+    inner class ViewHolder(val foodItemBinding: FoodItemBinding) : RecyclerView.ViewHolder(foodItemBinding.root),
+        View.OnClickListener {
+        init {
+            foodItemBinding.root.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = absoluteAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.foodItemBinding.foodName.text = foodList[position].yemekIsmi
