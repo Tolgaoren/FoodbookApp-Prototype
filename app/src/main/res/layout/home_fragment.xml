@@ -20,6 +20,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/myWhite"
+        app:tabTextColor="@color/myBlack"
+        app:tabSelectedTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/toolbarm"
         app:tabMode="scrollable">
 
