@@ -55,8 +55,10 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
             }
 
             yemekGetir.setOnClickListener {
-                viewModel.yemekleriGetir()
-                loadFoodData()
+                if (malzemeListesi.isNotEmpty()) {
+                    viewModel.yemekleriGetir()
+                    loadFoodData()
+                }
             }
 
         }
@@ -64,7 +66,7 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
     }
 
     private fun loadFoodData() {
-        Log.d("TAG",malzemeListesi.toList().toString())
+        Log.d("TAG","Malzeme Listesi: " + malzemeListesi.toList().toString())
         viewModel.foodList.observe(viewLifecycleOwner, {
             it?.let {
                 val sonuclarYemek: ArrayList<Yemek> = arrayListOf()
@@ -74,12 +76,11 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
                         sonuclarYemek.add(i)
                     }
                 }
-                if (sonuclarYemek.isEmpty()) {
-                    Toast.makeText(this.context, "Sonuç bulunamadı.", Toast.LENGTH_SHORT).show()
-                } else {
+                if (sonuclarYemek.isNotEmpty()) {
                     actionToFoods(sonuclarYemek.toList())
+                } else {
+                    Toast.makeText(this.context, "Sonuç bulunamadı.", Toast.LENGTH_SHORT).show()
                 }
-                Log.d("TAG", sonuclarYemek.toList().toString())
             }
         })
         malzemeListesi.clear()
@@ -88,6 +89,14 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         materialAdapter.removeItem(position)
+        malzemeListesi.removeAt(position)
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        materialAdapter.temizle()
+        malzemeListesi.clear()
     }
 
     private fun actionToFoods(sonuclarYemek: List<Yemek>) {
