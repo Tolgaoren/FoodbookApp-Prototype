@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.toren.foodbookapp.ui.viewmodel.LoginViewModel
@@ -44,7 +45,11 @@ class LoginFragment : Fragment() {
     private fun loginAccount() {
         viewModel.control.observe(viewLifecycleOwner, {
             it?.let {
-                actionToHome()
+                if (it) {
+                    actionToHome()
+                } else {
+                    Toast.makeText(this.context,"Kullanıcı bilgileri hatalı",Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }
