@@ -8,7 +8,8 @@ import com.toren.foodbookapp.databinding.MaterialItemBinding
 
 class MaterialItemAdapter(
     private val materialList: ArrayList<String>,
-    private val listener: OnItemClickListener
+    private val listener: OnItemClickListener,
+    private val deleteIconStatus: Boolean
 ) : RecyclerView.Adapter<MaterialItemAdapter.ViewHolder>() {
 
     inner class ViewHolder(val materialItemBinding: MaterialItemBinding) :
@@ -31,6 +32,9 @@ class MaterialItemAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (!deleteIconStatus) {
+            holder.materialItemBinding.itemDelete.visibility = View.INVISIBLE
+        }
         holder.materialItemBinding.itemName.text = materialList[position]
     }
 
