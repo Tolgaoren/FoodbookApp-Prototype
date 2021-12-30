@@ -18,7 +18,6 @@ class AccountViewModel : ViewModel() {
 
     fun getFoodData() {
         viewModelScope.launch(Dispatchers.IO) {
-            //val data = db.collection("users").document(auth.uid.toString()).collection("foods")
             val data = db.collection("foods").whereEqualTo("user",auth.uid.toString())
             data.get().addOnSuccessListener {
                 if (it != null) {
