@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FoodbookApp</string>
-    <string name="home">Home</string>
-    <string name="add_food">Add Food</string>
-    <string name="account">Account</string>
+    <string name="home">Anasayfa</string>
+    <string name="add_food">Ekle</string>
+    <string name="profil">Profil</string>
     <string name="tolganin_mutfagi">Tolga\'nın Mutfağı</string>
     <string name="app_logo">App Logo</string>
     <string name="e_posta">E-posta</string>
