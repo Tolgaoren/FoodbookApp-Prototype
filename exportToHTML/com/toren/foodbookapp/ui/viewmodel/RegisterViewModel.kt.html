@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>RegisterViewModel.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RegisterViewModel.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.toren.foodbookapp.ui.viewmodel</span>
+
+<span class="s1">import android.util.Log</span>
+<span class="s1">import androidx.lifecycle.MutableLiveData</span>
+<span class="s1">import androidx.lifecycle.ViewModel</span>
+<span class="s1">import androidx.lifecycle.viewModelScope</span>
+<span class="s1">import com.google.firebase.auth.ktx.auth</span>
+<span class="s1">import com.google.firebase.firestore.ktx.firestore</span>
+<span class="s1">import com.google.firebase.ktx.Firebase</span>
+<span class="s1">import com.toren.foodbookapp.model.Users</span>
+<span class="s1">import kotlinx.coroutines.Dispatchers</span>
+<span class="s1">import kotlinx.coroutines.launch</span>
+
+<span class="s0">class </span><span class="s1">RegisterViewModel : ViewModel() {</span>
+
+    <span class="s1">private </span><span class="s0">val </span><span class="s1">auth = Firebase.auth</span>
+    <span class="s1">private </span><span class="s0">val </span><span class="s1">db = Firebase.firestore</span>
+    <span class="s0">var </span><span class="s1">control = MutableLiveData(</span><span class="s0">false</span><span class="s1">)</span>
+
+    <span class="s0">fun </span><span class="s1">saveNewUser(user: Users</span><span class="s0">, </span><span class="s1">password: String) {</span>
+        <span class="s1">viewModelScope.launch(Dispatchers.IO) {</span>
+            <span class="s1">auth.createUserWithEmailAndPassword(user.email</span><span class="s0">, </span><span class="s1">password)</span>
+                <span class="s1">.addOnCompleteListener() { task -&gt;</span>
+                    <span class="s0">if </span><span class="s1">(task.isSuccessful) {</span>
+                        <span class="s1">user.uuid = auth.uid.toString()</span>
+                        <span class="s1">db.collection(</span><span class="s2">&quot;users&quot;</span><span class="s1">).document(user.uuid).set(user)</span>
+                        <span class="s1">Log.d(</span><span class="s2">&quot;TAG&quot;</span><span class="s0">, </span><span class="s2">&quot;createUserWithEmail:success&quot;</span><span class="s1">)</span>
+                        <span class="s1">control.value = </span><span class="s0">true</span>
+                    <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                        <span class="s1">Log.d(</span><span class="s2">&quot;TAG&quot;</span><span class="s0">, </span><span class="s2">&quot;createUserWithEmail:failure&quot;</span><span class="s0">, </span><span class="s1">task.exception)</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

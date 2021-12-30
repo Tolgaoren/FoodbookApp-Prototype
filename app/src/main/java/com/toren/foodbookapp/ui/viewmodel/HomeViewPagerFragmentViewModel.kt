@@ -23,7 +23,6 @@ class HomeViewPagerFragmentViewModel : ViewModel() {
                     foodList.value = it.toObjects(Yemek::class.java)
                 }
             }.addOnFailureListener {
-                //doldur burayi
             }
         }
     }

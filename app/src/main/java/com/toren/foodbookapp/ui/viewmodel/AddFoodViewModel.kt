@@ -20,8 +20,6 @@ class AddFoodViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             storegeReference.child(yemek.yemekIsmi + "?user=" + yemek.user).putFile(imageUrl)
             db.collection("foods").document(yemek.yemekIsmi + "?user=" + yemek.user).set(yemek)
-            /*db.collection("users").document(yemek.user).collection("foods")
-                .document(yemek.yemekIsmi + yemek.user).set(yemek)*/
         }
     }
 
