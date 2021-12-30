@@ -104,6 +104,8 @@ class AddFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         materialAdapter.removeItem(position)
+        materialList.removeAt(position)
+        materialListDetayli.removeAt(position)
     }
 
     private fun materialControl(
