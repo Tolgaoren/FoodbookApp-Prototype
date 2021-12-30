@@ -20,7 +20,7 @@ class SearchFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
     private var _binding: SearchFoodFragmentBinding? = null
     private val binding get() = _binding!!
     private val malzemeListesi = ArrayList<String>(arrayListOf())
-    private var materialAdapter = MaterialItemAdapter(arrayListOf(), this)
+    private var materialAdapter = MaterialItemAdapter(arrayListOf(), this, true)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
