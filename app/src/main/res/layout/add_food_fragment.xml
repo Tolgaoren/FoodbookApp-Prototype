@@ -92,6 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
+                android:enabled="false"
+                android:textColor="@color/black"
                 android:text="@string/adet"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>

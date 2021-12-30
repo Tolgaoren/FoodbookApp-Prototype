@@ -4,12 +4,14 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -84,22 +86,74 @@ class AddFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
             }
 
             buttonAddFood.setOnClickListener {
-                val yemek = Yemek(
-                    yemekIsmi = inputFoodName.editText!!.text.toString(),
-                    malzemeler = materialList,
-                    malzemelerDetayli = materialListDetayli,
-                    hazirlanis = textInputLayout4.editText!!.text.toString(),
-                    aciklama = textInputLayout5.editText!!.text.toString(),
-                    kategori = inputFoodCategory.editText!!.text.toString(),
-                    imgUrl = inputFoodName.editText!!.text.toString() + "?user=" + auth.uid.toString(),
-                    user = auth.uid.toString()
-                )
-                viewModel.saveNewFood(yemek, imageUrl)
-                actionToHome()
+
+                if (control(
+                        inputFoodName.editText!!.text.toString(),
+                        materialList,
+                        textInputLayout4.editText!!.text.toString(),
+                        textInputLayout5.editText!!.text.toString(),
+                        inputFoodCategory.editText!!.text.toString(),
+                    )
+                ) {
+                    val yemek = Yemek(
+                        yemekIsmi = inputFoodName.editText!!.text.toString(),
+                        malzemeler = materialList,
+                        malzemelerDetayli = materialListDetayli,
+                        hazirlanis = textInputLayout4.editText!!.text.toString(),
+                        aciklama = textInputLayout5.editText!!.text.toString(),
+                        kategori = inputFoodCategory.editText!!.text.toString(),
+                        imgUrl = inputFoodName.editText!!.text.toString() + "?user=" + auth.uid.toString(),
+                        user = auth.uid.toString()
+                    )
+                    viewModel.saveNewFood(yemek, imageUrl)
+                    actionToHome()
+                    //inputMaterialType.editText!!.setText("adet")
+                }
 
             }
         }
 
+    }
+
+    private fun control(
+        yemekIsmi: String,
+        malzemeler: ArrayList<String>,
+        hazirlanis: String,
+        aciklama: String,
+        kategori: String
+    ): Boolean {
+        var control = true
+
+        if (yemekIsmi.isEmpty()) {
+            binding.inputFoodName.editText!!.error = "Tarif ismi ekleyiniz"
+            control = false
+        } else {
+            binding.inputFoodName.editText!!.error = null
+        }
+        if (malzemeler.isEmpty()) {
+            Toast.makeText(this.context,"Malzeme giriniz",Toast.LENGTH_SHORT).show()
+            control = false
+        }
+        if (hazirlanis.isEmpty()) {
+            binding.textInputLayout4.editText!!.error = "Hazırlanış ekleyiniz"
+            control = false
+        } else {
+            binding.textInputLayout4.editText!!.error = null
+        }
+        if (aciklama.isEmpty()) {
+            binding.textInputLayout5.editText!!.error = "Açıklama ekleyiniz"
+            control = false
+        } else {
+            binding.textInputLayout5.editText!!.error = null
+        }
+        if (kategori.isEmpty()) {
+            binding.inputFoodCategory.error= "Kategori seçiniz"
+            control = false
+        } else {
+            binding.inputFoodCategory.error = null
+        }
+
+        return control
     }
 
     override fun onItemClick(position: Int) {
