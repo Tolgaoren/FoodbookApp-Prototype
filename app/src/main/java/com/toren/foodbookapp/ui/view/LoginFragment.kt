@@ -47,8 +47,6 @@ class LoginFragment : Fragment() {
             it?.let {
                 if (it) {
                     actionToHome()
-                } else {
-                    Toast.makeText(this.context,"Kullanıcı bilgileri hatalı",Toast.LENGTH_SHORT).show()
                 }
             }
         })
