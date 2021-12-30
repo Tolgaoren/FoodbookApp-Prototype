@@ -30,7 +30,7 @@ class AddFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
     private val binding get() = _binding!!
     private val materialListDetayli = ArrayList<String>(arrayListOf())
     private val materialList = ArrayList<String>(arrayListOf())
-    private var materialAdapter = MaterialItemAdapter(arrayListOf(), this)
+    private var materialAdapter = MaterialItemAdapter(arrayListOf(), this, true)
     private lateinit var auth: FirebaseAuth
     private lateinit var imageUrl: Uri
 
@@ -62,7 +62,7 @@ class AddFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
                 val galleryIntent = Intent()
                 galleryIntent.action = Intent.ACTION_GET_CONTENT
                 galleryIntent.type = "image/*"
-                startActivityForResult(galleryIntent,2)
+                startActivityForResult(galleryIntent, 2)
             }
 
             buttonAddMaterial.setOnClickListener {

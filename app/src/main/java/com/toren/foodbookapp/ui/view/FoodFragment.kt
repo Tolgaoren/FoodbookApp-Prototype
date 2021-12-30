@@ -18,7 +18,7 @@ class FoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
     private val viewModel: FoodViewModel by viewModels()
     private var _binding: FoodFragmentBinding? = null
     private val binding get() = _binding!!
-    private var materialAdapter = MaterialItemAdapter(arrayListOf(),this)
+    private var materialAdapter = MaterialItemAdapter(arrayListOf(),this, false)
     private val args: FoodFragmentArgs by navArgs()
 
     override fun onCreateView(
