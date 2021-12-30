@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.load
 import com.toren.foodbookapp.adapter.MaterialItemAdapter
 import com.toren.foodbookapp.databinding.FoodFragmentBinding
 import com.toren.foodbookapp.ui.viewmodel.FoodViewModel
@@ -39,7 +40,12 @@ class FoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
             foodUser.text = food.user
             foodAciklama.text = food.aciklama
             foodHazirlanis.text = food.hazirlanis
-
+            viewModel.getBitmap(food.imgUrl)
+            viewModel.image.observe(viewLifecycleOwner, {
+                it?.let {
+                    foodImage.load(it)
+                }
+            })
             recyclerViewMalzemeler.layoutManager = LinearLayoutManager(view.context)
             recyclerViewMalzemeler.adapter = materialAdapter
 
