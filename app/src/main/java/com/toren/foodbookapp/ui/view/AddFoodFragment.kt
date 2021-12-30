@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -152,6 +151,10 @@ class AddFoodFragment : Fragment(), MaterialItemAdapter.OnItemClickListener {
         } else {
             binding.inputFoodCategory.error = null
         }
+        /*if (imageUrl.toString().isEmpty()) {
+            Toast.makeText(this.context,"Resim giriniz",Toast.LENGTH_SHORT).show()
+            control = false
+        }*/
 
         return control
     }
