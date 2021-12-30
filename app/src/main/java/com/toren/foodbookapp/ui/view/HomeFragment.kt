@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
-import com.toren.foodbookapp.R
 import com.toren.foodbookapp.adapter.viewpager.HomeViewPagerAdapter
 import com.toren.foodbookapp.ui.viewmodel.HomeViewModel
 import com.toren.foodbookapp.databinding.HomeFragmentBinding
@@ -40,14 +39,17 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            toolbarm.toolbar.inflateMenu(R.menu.search_view)
+            robot.setOnClickListener {
+                actionToSearchFood()
+            }
 
         }
 
-        binding.robot.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToSearchFoodFragment()
-            findNavController().navigate(action)
-        }
+    }
+
+    private fun actionToSearchFood() {
+        val action = HomeFragmentDirections.actionHomeFragmentToSearchFoodFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
