@@ -14,6 +14,10 @@
             android:id="@+id/action_homeFragment_to_addFoodFragment2"
             app:destination="@id/addFoodFragment" />
         <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@+id/searchFragment"
+            />
+        <action
             android:id="@+id/action_homeFragment_to_accountFragment2"
             app:destination="@id/accountFragment" />
         <action
@@ -55,6 +59,15 @@
         <action
             android:id="@+id/action_addFoodFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.toren.foodbookapp.ui.view.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_homeFragment"
+            app:destination="@id/homeFragment"/>
     </fragment>
     <fragment
         android:id="@+id/accountFragment"

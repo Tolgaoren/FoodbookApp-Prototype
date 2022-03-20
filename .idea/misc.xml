@@ -32,14 +32,23 @@
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/account_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/add_food_fragment.xml" value="0.33" />
-        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/home_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/food_fragment.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/food_item.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/foods_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/fragment_search.xml" value="0.35597826086956524" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/home_fragment.xml" value="0.49654218533886585" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/list_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/login_fragment.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/material_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/recycler_view_row.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/register_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/row_item.xml" value="0.36096014492753625" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/search_food_fragment.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/search_fragment.xml" value="0.25" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/layout/toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/menu/account_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/menu/bottom_bar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/orent/AndroidStudioProjects/FoodbookApp/app/src/main/res/menu/search.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
